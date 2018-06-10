@@ -1,6 +1,8 @@
 package Common;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -27,11 +29,11 @@ public class TestListeners implements ITestListener {
 
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
-		/*
+	
 		logger=extent.startTest("passTest");
 		Assert.assertTrue(true);
 		logger.log(LogStatus.PASS,"Test case (failure) status is passed");
-		*/
+		
 		
 		extent.flush();
 		
@@ -42,17 +44,17 @@ public class TestListeners implements ITestListener {
 		// TODO Auto-generated method stub
 		
 		//System.out.println("The test has failed becoze : "+result.getName());should be uncommeneted
-		/*logger=extent.startTest("failTest");
+		logger=extent.startTest("failTest");
 		Assert.assertTrue(false);
-		logger.log(LogStatus.PASS,"Test case passed is passTest");*/
+		logger.log(LogStatus.PASS,"Test case passed is passTest");
 		extent.flush();		
 	}
 
 	public void onTestSkipped(ITestResult result) {
 		// TODO Auto-generated method stub
 		extent.flush();
-		//logger=extent.startTest("skipTest");
-		//throw new SkipException("Skipping - This is not ready for testing"); should be uncommeneted
+		logger=extent.startTest("skipTest");
+		throw new SkipException("Skipping - This is not ready for testing");// should be uncommeneted
 		
 	}
 
@@ -62,6 +64,11 @@ public class TestListeners implements ITestListener {
 	}
 
 	public void onStart(ITestContext context) {
+		 Date dNow = new Date( );
+	      SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+
+	      System.out.println("Current Date: " + ft.format(dNow));
+	   
 		
 		// TODO Auto-generated method stub F:\Repo
 		/*extent=new ExtentReports(System.getenv("user.dir")+"/test-output/STMExtentReport.html",true);
@@ -75,7 +82,7 @@ public class TestListeners implements ITestListener {
 		//System.out.println("The test has folder : "+System.getenv("user.dir"));
 		
 		
-		extent=new ExtentReports(".\\src\\extendR\\STMExtentReport.html",true);
+		extent=new ExtentReports(".\\src\\extendR\\STMExtentReport"+dNow.getDate()+".html",true);
 		extent
 		.addSystemInfo("Host Name", "Software Automation Meterial")
 		.addSystemInfo("Environment", "Automation Practice")

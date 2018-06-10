@@ -12,10 +12,10 @@
     </classes>
   </test>
   
-  <test  name="Defaulttest2" verbose="2">
+  <!-- <test  name="Defaulttest2" verbose="2">
   <parameter name="browser" value="Chrome"/>
     <classes>
       <class name="Tests.HomeTest"/>      
     </classes>
-  </test> <!-- Default test -->  
+  </test> --> <!-- Default test -->  
 </suite> <!-- Default suite -->
